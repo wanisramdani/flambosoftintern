@@ -7,6 +7,11 @@ Things you may want to cover:
 
 * Ruby version
 
+> ruby 3.2.2 (2023-03-30 revision e51014f9c0) [x86_64-linux]
+
+> Rails 7.0.6
+
+
 * System dependencies
 
 * Configuration
