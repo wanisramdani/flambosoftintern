@@ -32,6 +32,8 @@ gem "jbuilder"
 
 gem "foreman"
 
+gem "letter_opener", group: :development
+
 # Use Redis adapter to run Action Cable in production
 # gem get"redis", "~> 4.0"
 
