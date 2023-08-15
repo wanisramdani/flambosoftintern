@@ -11,6 +11,9 @@ Things you may want to cover:
 
 > Rails 7.0.6
 
+> Gem 3.4.10
+
+
 
 * System dependencies
 

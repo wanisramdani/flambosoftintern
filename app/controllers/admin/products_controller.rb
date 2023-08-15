@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < Admin::AdminController
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
   end
 
   # POST /products or /products.json
+
+
   def create
     @product = Product.new(product_params)
 
