@@ -7,4 +7,8 @@ import "flowbite/dist/flowbite.turbo.js";
 import './sidebar';
 import './charts';
 import './dark-mode';
-import './constants'
+import './constants';
+
+import './customdatatables.js';
+
+

@@ -1,9 +1,17 @@
 class Admin::ProductsController < Admin::AdminController
   before_action :set_product, only: %i[ show edit update destroy ]
+  #load_and_authorize_resource
 
   # GET /products or /products.json
   def index
+    # authorize! :show, @product
     @products = Product.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: ProductDatatable.new(params) }
+    end
+
   end
 
   # GET /products/1 or /products/1.json
@@ -27,12 +35,14 @@ class Admin::ProductsController < Admin::AdminController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
+        format.html { redirect_to admin_product_url(@product), notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
+      format.html
+      format.json { render json: ProductDatatable.new(params) }
     end
   end
 
