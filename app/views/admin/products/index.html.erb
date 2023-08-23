@@ -1,6 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="bg-gray-50 dark:bg-gray-800">
+  <%= render 'admin/dashboard/layout/navbar' %>>
 
-<h1>Products</h1>
+  <div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+
+    <%= render 'admin/dashboard/layout/sidebar' %>
+
+    <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900">
+      <main>
+
+
+
+
+      <p style="color: green"><%= notice %></p>
+
 
 
 
@@ -81,14 +93,12 @@
   <div class="overflow-x-auto">
     <div class="inline-block min-w-full align-middle">
       <div class="overflow-hidden shadow">
-        <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
+        <table id="products-datatables" data-source="<%= admin_products_path(format: :json) %>" class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
           <thead class="bg-gray-100 dark:bg-gray-700">
           <tr>
-            <th scope="col" class="p-4">
-              <div class="flex items-center">
-                <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
-                <label for="checkbox-all" class="sr-only">checkbox</label>
-              </div>
+
+            <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+              Id
             </th>
             <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
               Product Name
@@ -108,33 +118,7 @@
           <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
 
 
-          <div id="products">
-            <% @products.each do |product| %>
 
-              <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                <td class="w-4 p-4">
-                  <div class="flex items-center">
-                    <input id="checkbox-{{ .id }}" aria-describedby="checkbox-1" type="checkbox"
-                           class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="checkbox-{{ .id }}" class="sr-only">checkbox</label>
-                  </div>
-                </td>
-                <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                  <div class="text-base font-semibold text-gray-900 dark:text-white">  <%= product.name %> </div>
-                </td>
-                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">$<%= product.price %></td>
-                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"><%= product.quantity %></td>
-                <td class="p-4 space-x-2 whitespace-nowrap">
-
-                  <a
-                  <%= link_to 'Update or Delete', [:admin, product], method: :delete %>
-                  </a>
-                </td>
-
-              </tr>
-
-            <% end %>
-          </div>
 
 
           </tbody>
@@ -244,7 +228,8 @@
     </svg>
     <span class="sr-only">Close menu</span>
   </button>
-  <form action="#">
+
+<!--  <form action="#">
     <div class="space-y-4">
       <div>
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -255,6 +240,7 @@
         <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
         <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
       </div>
+
       <div>
         <label for="category-create" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Technology</label>
         <select id="category-create" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -265,10 +251,12 @@
           <option value="VU">Vue</option>
         </select>
       </div>
+
       <div>
         <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
         <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter event description here"></textarea>
       </div>
+
       <div>
         <label for="discount-create" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Discount</label>
         <select id="discount-create" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -281,6 +269,7 @@
           <option value="50">50%</option>
         </select>
       </div>
+      
       <div class="bottom-0 left-0 flex justify-center w-full pb-4 space-x-4 md:px-4 md:absolute">
         <button type="submit" class="text-black w-full justify-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
           Add product
@@ -294,5 +283,20 @@
       </div>
     </div>
   </form>
+-->
+
 </div>
 
+
+
+
+      </main>
+
+      <%= render 'admin/dashboard/layout/footer' %>>
+
+    </div>
+
+  </div>
+
+
+</div>
