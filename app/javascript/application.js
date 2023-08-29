@@ -1,4 +1,4 @@
-// Entry point for the build script in your package.json
+// Entry point for the build script in your package.jsonrai
 import "@hotwired/turbo-rails"
 import "./controllers"
 import 'flowbite';
@@ -11,4 +11,5 @@ import './constants';
 
 import './customdatatables.js';
 
+import './tom-select.base.js';
 
