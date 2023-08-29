@@ -26,7 +26,15 @@
     <%= form.number_field :quantity %>
   </div>
 
+  <%= form.fields_for :categories do | category | %>
+    <div>
+      <%= form.label :category, style: "display: block" %>
+      <%#= form.select :category, Admin::Category.all.pluck(:title), {},{ multiple: true, id: 'tom-select-it'} %>
+    </div>
+  <% end %>
+
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+

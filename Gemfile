@@ -34,6 +34,14 @@ gem "foreman"
 
 gem "letter_opener", group: :development
 
+# Permission
+gem 'cancancan'
+
+# Datatables
+gem 'jquery-datatables'
+
+gem 'ajax-datatables-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem get"redis", "~> 4.0"
 
